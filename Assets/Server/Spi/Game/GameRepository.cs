@@ -27,8 +27,7 @@ public class InMemoryGameRepository : Domain.Game.GameRepository {
 
   public IList<Domain.Game.Game> GetGames() {
     var res = new List<Domain.Game.Game>();
-
-    return res;
+    return new List<Domain.Game.Game>(repository.Values);
   }
 }
 
