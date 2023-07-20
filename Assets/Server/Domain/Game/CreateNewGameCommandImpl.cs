@@ -14,11 +14,13 @@ public class CreateNewGameCommandImpl : CreateNewGameCommand {
 
   public void Handle(string gameHandle, int maxSeasons) {
     if (gameRepository.DoesGameExist(gameHandle)) {
-      throw new System.Exception($"[{gameHandle}] game already exists.");
+      throw new Domain.Exceptions.GameCreationException(
+        $"[{gameHandle}] game already exists."
+      );
     }
 
     if (!GAME_LENGTHS.Contains(maxSeasons)) {
-      throw new System.Exception(
+      throw new Domain.Exceptions.GameCreationException(
         $"Invalid number of seasons. ({maxSeasons}, should be 5, 10, 25, 50)"
       );
     }
