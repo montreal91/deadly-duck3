@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HandleHolder : MonoBehaviour {
-    private string handle;
+  private string handle;
 
-    public string Handle {
-        get => handle;
-    }
+  public string Handle {
+    get => handle;
+  }
 
-    void Start() {}
+  void Start() {}
 
-    void Update() {}
+  void Update() {}
 
-    public void SetHandle(string handle) {
-        this.handle = handle;
-    }
+  public void SetHandle(string handle) {
+    this.handle = handle;
+  }
 }

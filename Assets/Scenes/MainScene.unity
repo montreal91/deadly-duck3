@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 51566531}
   m_Layer: 5
   m_Name: NewGameCanvas
-  m_TagString: Untagged
+  m_TagString: UiCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -852,16 +852,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1851640283}
-        m_TargetAssemblyTypeName: Runner, Assembly-CSharp
-        m_MethodName: BackToMainMenuScreen
-        m_Mode: 1
+      - m_Target: {fileID: 2019630618}
+        m_TargetAssemblyTypeName: CanvasManager, Assembly-CSharp
+        m_MethodName: ShowCanvas
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: MainMenuCanvas
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &161292089
@@ -1184,16 +1184,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1851640283}
-        m_TargetAssemblyTypeName: Runner, Assembly-CSharp
-        m_MethodName: ShowStartNewGameScreen
-        m_Mode: 1
+      - m_Target: {fileID: 2019630618}
+        m_TargetAssemblyTypeName: CanvasManager, Assembly-CSharp
+        m_MethodName: ShowCanvas
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: NewGameCanvas
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &334219467
@@ -2463,7 +2463,7 @@ GameObject:
   - component: {fileID: 570147538}
   m_Layer: 5
   m_Name: LoadGameCanvas
-  m_TagString: Untagged
+  m_TagString: UiCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2539,7 +2539,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 570147536}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -2670,7 +2670,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000013802475}
+  m_AnchoredPosition: {x: 0, y: 0.000026292139}
   m_SizeDelta: {x: 0, y: 150}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &726555769
@@ -3140,16 +3140,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1851640283}
-        m_TargetAssemblyTypeName: Runner, Assembly-CSharp
-        m_MethodName: BackToMainMenuScreen
-        m_Mode: 1
+      - m_Target: {fileID: 2019630618}
+        m_TargetAssemblyTypeName: CanvasManager, Assembly-CSharp
+        m_MethodName: ShowCanvas
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: MainMenuCanvas
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &946741379
@@ -3204,7 +3204,7 @@ GameObject:
   - component: {fileID: 963436669}
   m_Layer: 5
   m_Name: MainMenuCanvas
-  m_TagString: Untagged
+  m_TagString: UiCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3295,7 +3295,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.2000122, y: -0.1000061}
+  m_AnchoredPosition: {x: 0.2000122, y: -0.100097656}
   m_SizeDelta: {x: 0.4000244, y: -0.2000122}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &981240939
@@ -3396,9 +3396,8 @@ RectTransform:
   - {fileID: 51566530}
   - {fileID: 570147537}
   - {fileID: 1018110676}
-  - {fileID: 1851640282}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3456,7 +3455,7 @@ GameObject:
   - component: {fileID: 1018110674}
   m_Layer: 5
   m_Name: MainGameCanvas
-  m_TagString: Untagged
+  m_TagString: UiCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3791,6 +3790,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1090796300}
   m_CullTransparentMesh: 1
+--- !u!1 &1184368070
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1184368072}
+  - component: {fileID: 1184368071}
+  m_Layer: 0
+  m_Name: ApplicationContext
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1184368071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184368070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2383a3d03ef8e2a46a78776e3d8705bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1184368072
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184368070}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -94.399994, y: 191.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1303999940
 GameObject:
   m_ObjectHideFlags: 0
@@ -3924,7 +3967,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 160}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 600, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1334279231
 GameObject:
@@ -4943,6 +4986,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2019630618}
+        m_TargetAssemblyTypeName: CanvasManager, Assembly-CSharp
+        m_MethodName: ShowCanvas
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MainGameCanvas
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1618703897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5237,16 +5292,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1851640283}
-        m_TargetAssemblyTypeName: Runner, Assembly-CSharp
-        m_MethodName: ShowLoadGameScreen
-        m_Mode: 1
+      - m_Target: {fileID: 2019630618}
+        m_TargetAssemblyTypeName: CanvasManager, Assembly-CSharp
+        m_MethodName: ShowCanvas
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: LoadGameCanvas
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1732536226
@@ -5618,12 +5673,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 981240943}
-  m_RootOrder: 4
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -494.2, y: 9}
+  m_AnchoredPosition: {x: -94.399994, y: 191.6}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1851640283
@@ -5647,6 +5702,7 @@ MonoBehaviour:
   mainGameTitle: {fileID: 1303999941}
   content: {fileID: 703742748}
   loadLineButtonPrefab: {fileID: 8329753822705256261, guid: 72ad3a3ce3900fa4381ae904d3309430, type: 3}
+  context: {fileID: 1184368071}
 --- !u!1 &1865335425
 GameObject:
   m_ObjectHideFlags: 0
@@ -6502,6 +6558,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2007485204}
   m_CullTransparentMesh: 1
+--- !u!1 &2019630617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2019630619}
+  - component: {fileID: 2019630618}
+  m_Layer: 0
+  m_Name: CanvasManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2019630618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019630617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0420a8fe32577704e849ec9fedb73d2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasTag: UiCanvas
+  initialCanvas: MainMenuCanvas
+--- !u!4 &2019630619
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019630617}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -94.399994, y: 191.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2023246101
 GameObject:
   m_ObjectHideFlags: 0
@@ -6698,7 +6800,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2065320083}
   m_HandleRect: {fileID: 2065320082}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -6912,23 +7014,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8329753822705256261, guid: 72ad3a3ce3900fa4381ae904d3309430, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8329753822705256261, guid: 72ad3a3ce3900fa4381ae904d3309430, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1851640283}
+      objectReference: {fileID: 2019630618}
     - target: {fileID: 8329753822705256261, guid: 72ad3a3ce3900fa4381ae904d3309430, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8329753822705256261, guid: 72ad3a3ce3900fa4381ae904d3309430, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: BackToMainMenuScreen
+      value: ShowCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 8329753822705256261, guid: 72ad3a3ce3900fa4381ae904d3309430, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Runner, Assembly-CSharp
+      value: CanvasManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329753822705256261, guid: 72ad3a3ce3900fa4381ae904d3309430, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: MainMenuCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 8329753822705256261, guid: 72ad3a3ce3900fa4381ae904d3309430, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
