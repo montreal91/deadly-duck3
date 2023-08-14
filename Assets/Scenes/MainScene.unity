@@ -270,6 +270,7 @@ GameObject:
   - component: {fileID: 51566533}
   - component: {fileID: 51566532}
   - component: {fileID: 51566531}
+  - component: {fileID: 51566534}
   m_Layer: 5
   m_Name: NewGameCanvas
   m_TagString: UiCanvas
@@ -364,6 +365,22 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &51566534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51566529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4840ec6c18fb1c74785d232a49541a5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: {fileID: 1081112279}
+  context: {fileID: 1184368071}
+  gameTitleInput: {fileID: 1524389763}
+  gameLengthDropdown: {fileID: 471189372}
 --- !u!1 &52551285
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,9 +735,33 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1851640283}
-        m_TargetAssemblyTypeName: Runner, Assembly-CSharp
+      - m_Target: {fileID: 51566534}
+        m_TargetAssemblyTypeName: NewGameCanvasController, Assembly-CSharp
         m_MethodName: StartNewGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2019630618}
+        m_TargetAssemblyTypeName: CanvasManager, Assembly-CSharp
+        m_MethodName: ShowCanvas
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MainGameCanvas
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1018110677}
+        m_TargetAssemblyTypeName: MainGameCanvasController, Assembly-CSharp
+        m_MethodName: UpdateScreenWidgets
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2461,6 +2502,7 @@ GameObject:
   - component: {fileID: 570147540}
   - component: {fileID: 570147539}
   - component: {fileID: 570147538}
+  - component: {fileID: 570147541}
   m_Layer: 5
   m_Name: LoadGameCanvas
   m_TagString: UiCanvas
@@ -2555,6 +2597,22 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &570147541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570147536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f942eb1d53ac9d4ebe0aa7012d23ccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: {fileID: 1081112279}
+  context: {fileID: 1184368071}
+  loadLineButtonPrefab: {fileID: 8329753822705256261, guid: 72ad3a3ce3900fa4381ae904d3309430, type: 3}
+  content: {fileID: 703742748}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2670,7 +2728,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000026292139}
+  m_AnchoredPosition: {x: 0, y: 0.000023454428}
   m_SizeDelta: {x: 0, y: 150}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &726555769
@@ -3453,6 +3511,7 @@ GameObject:
   - component: {fileID: 1018110673}
   - component: {fileID: 1018110675}
   - component: {fileID: 1018110674}
+  - component: {fileID: 1018110677}
   m_Layer: 5
   m_Name: MainGameCanvas
   m_TagString: UiCanvas
@@ -3545,6 +3604,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1018110677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018110672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef894e8bd6782724ab8ea1b1b667fb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameState: {fileID: 1081112279}
+  mainGameTitle: {fileID: 1303999941}
 --- !u!1 &1022444923
 GameObject:
   m_ObjectHideFlags: 0
@@ -3655,6 +3728,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022444923}
   m_CullTransparentMesh: 1
+--- !u!1 &1081112278
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1081112280}
+  - component: {fileID: 1081112279}
+  m_Layer: 0
+  m_Name: GameState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1081112279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081112278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c3610153abc014087c8b0b8a8097f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentGameTitle: 
+--- !u!4 &1081112280
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081112278}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 207.00003, y: 118.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1090796300
 GameObject:
   m_ObjectHideFlags: 0
@@ -4974,18 +5092,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1851640283}
-        m_TargetAssemblyTypeName: Runner, Assembly-CSharp
-        m_MethodName: LoadSavedGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2019630618}
         m_TargetAssemblyTypeName: CanvasManager, Assembly-CSharp
         m_MethodName: ShowCanvas
@@ -4996,6 +5102,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: MainGameCanvas
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1018110677}
+        m_TargetAssemblyTypeName: MainGameCanvasController, Assembly-CSharp
+        m_MethodName: UpdateScreenWidgets
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1618703897
@@ -5302,6 +5420,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: LoadGameCanvas
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 570147541}
+        m_TargetAssemblyTypeName: LoadCanvasController, Assembly-CSharp
+        m_MethodName: ShowSavedGames
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1732536226
@@ -5700,8 +5830,6 @@ MonoBehaviour:
   gameTitleInput: {fileID: 1524389763}
   gameLengthDropdown: {fileID: 471189372}
   mainGameTitle: {fileID: 1303999941}
-  content: {fileID: 703742748}
-  loadLineButtonPrefab: {fileID: 8329753822705256261, guid: 72ad3a3ce3900fa4381ae904d3309430, type: 3}
   context: {fileID: 1184368071}
 --- !u!1 &1865335425
 GameObject:
