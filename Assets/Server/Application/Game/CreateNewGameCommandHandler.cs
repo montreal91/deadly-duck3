@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 
-namespace Domain.Game.Port {
+namespace Application.Game.Handlers {
 
-public class CreateNewGameCommandImpl : CreateNewGameCommand {
+public class CreateNewGameCommand : Domain.Game.Commands.CreateNewGame {
   private readonly GameRepository gameRepository;
   private readonly HashSet<int> GAME_LENGTHS = new HashSet<int>(
     new int[] {5, 10, 25, 50}
   );
 
-  public CreateNewGameCommandImpl(GameRepository gameRepository) {
+  public CreateNewGameCommand(GameRepository gameRepository) {
     this.gameRepository = gameRepository;
   }
 
@@ -30,4 +30,4 @@ public class CreateNewGameCommandImpl : CreateNewGameCommand {
   }
 }
 
-}  // namespace Domain.Game.Port
+}  // Application.Game.Handlers

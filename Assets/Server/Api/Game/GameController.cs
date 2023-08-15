@@ -4,16 +4,16 @@ namespace Api.Game {
 
 public class GameController : Protocol.GameServer {
   private readonly Domain.Game.Port.GetAllGamesQuery getAllGamesQuery;
-  private readonly Domain.Game.Port.CreateNewGameCommand createNewGameCommand;
+  private readonly Application.Game.Ports.CreateNewGamePort createNewGamePort;
   private readonly GameConverter gameConverter;
 
   public GameController(
       Domain.Game.Port.GetAllGamesQuery getAllGamesQuery,
-      Domain.Game.Port.CreateNewGameCommand createNewGameCommand,
+      Application.Game.Ports.CreateNewGamePort createNewGamePort,
       GameConverter gameConverter
   ) {
     this.getAllGamesQuery = getAllGamesQuery;
-    this.createNewGameCommand = createNewGameCommand;
+    this.createNewGamePort = createNewGamePort;
     this.gameConverter = gameConverter;
   }
 
@@ -28,7 +28,7 @@ public class GameController : Protocol.GameServer {
   }
 
   public void CreateNewGame(Protocol.CreateNewGameDto game) {
-    createNewGameCommand.Handle(game.gameTitle, game.maxSeasons);
+    createNewGamePort.Handle(game.gameTitle, game.maxSeasons);
   }
 }
 
