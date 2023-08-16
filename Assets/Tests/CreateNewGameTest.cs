@@ -1,16 +1,15 @@
 
 using NUnit.Framework;
 
-using Domain;
 
 public class CreateNewGameCommandTest {
     private Domain.Game.GameRepository gameRepository;
-    private Domain.Game.Port.CreateNewGameCommandImpl commandImpl;
+    private App.Game.Handlers.CreateNewGameCommand commandHandler;
 
     [OneTimeSetUp]
     public void SetUp() {
         gameRepository = new MockGameRepository();
-        commandImpl = new Domain.Game.Port.CreateNewGameCommandImpl(
+        commandHandler = new App.Game.Handlers.CreateNewGameCommand(
             gameRepository
         );
         gameRepository.Save(
@@ -22,7 +21,7 @@ public class CreateNewGameCommandTest {
     public void CreateNewGameBaseCase() {
         Assert.False(gameRepository.DoesGameExist("TestGame"));
 
-        commandImpl.Handle("TestGame", 5);
+        commandHandler.Handle("TestGame", 5);
         var game = gameRepository.GetGameByHandle("TestGame");
 
         Assert.True(gameRepository.DoesGameExist("TestGame"));
@@ -33,14 +32,14 @@ public class CreateNewGameCommandTest {
         Assert.True(gameRepository.DoesGameExist("ExistingName"));
 
         Assert.Throws<Domain.Exceptions.GameCreationException>(
-            () => commandImpl.Handle("ExistingName", 5)
+            () => commandHandler.Handle("ExistingName", 5)
         );
     }
 
     [Test]
     public void InvalidSeasonNumber() {
         Assert.Throws<Domain.Exceptions.GameCreationException>(
-            () => commandImpl.Handle("TestGame", 6)
+            () => commandHandler.Handle("TestGame", 6)
         );
     }
 }

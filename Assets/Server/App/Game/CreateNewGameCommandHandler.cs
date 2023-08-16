@@ -1,14 +1,15 @@
 using System.Collections.Generic;
 
-namespace Application.Game.Handlers {
+namespace App.Game.Handlers {
+
 
 public class CreateNewGameCommand : Domain.Game.Commands.CreateNewGame {
-  private readonly GameRepository gameRepository;
+  private readonly Domain.Game.GameRepository gameRepository;
   private readonly HashSet<int> GAME_LENGTHS = new HashSet<int>(
     new int[] {5, 10, 25, 50}
   );
 
-  public CreateNewGameCommand(GameRepository gameRepository) {
+  public CreateNewGameCommand(Domain.Game.GameRepository gameRepository) {
     this.gameRepository = gameRepository;
   }
 
@@ -25,9 +26,9 @@ public class CreateNewGameCommand : Domain.Game.Commands.CreateNewGame {
       );
     }
 
-    Game game = new Game(gameHandle, maxSeasons);
+    Domain.Game.Game game = new Domain.Game.Game(gameHandle, maxSeasons);
     gameRepository.Save(game);
   }
 }
 
-}  // Application.Game.Handlers
+}  // App.Game.Handlers

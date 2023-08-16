@@ -1,13 +1,12 @@
 
 namespace Api.Game.Adapters {
 
-using Application.Game;
 
-public class CreateNewGameAdapter : Ports.CreateNewGamePort {
-  private Handlers.CreateNewGameCommand createNewGameCommand;
+public class CreateNewGameAdapter : App.Game.Ports.CreateNewGamePort {
+  private Domain.Game.Commands.CreateNewGame createNewGameCommand;
 
   public CreateNewGameAdapter(
-      Handlers.CreateNewGameCommand createNewGameCommand
+      Domain.Game.Commands.CreateNewGame createNewGameCommand
   ) {
     this.createNewGameCommand = createNewGameCommand;
   }

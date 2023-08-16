@@ -2,14 +2,15 @@ using System.Collections.Generic;
 
 namespace Api.Game {
 
+
 public class GameController : Protocol.GameServer {
   private readonly Domain.Game.Port.GetAllGamesQuery getAllGamesQuery;
-  private readonly Application.Game.Ports.CreateNewGamePort createNewGamePort;
+  private readonly App.Game.Ports.CreateNewGamePort createNewGamePort;
   private readonly GameConverter gameConverter;
 
   public GameController(
       Domain.Game.Port.GetAllGamesQuery getAllGamesQuery,
-      Application.Game.Ports.CreateNewGamePort createNewGamePort,
+      App.Game.Ports.CreateNewGamePort createNewGamePort,
       GameConverter gameConverter
   ) {
     this.getAllGamesQuery = getAllGamesQuery;
