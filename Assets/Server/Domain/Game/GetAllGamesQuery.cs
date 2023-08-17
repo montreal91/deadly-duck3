@@ -1,10 +1,10 @@
 
 using System.Collections.Generic;
 
-namespace Domain.Game.Port {
+namespace Domain.Game.Queries {
 
 public interface GetAllGamesQuery {
   IList<Game> Handle();
 }
 
-}  // namespace Domain.Game
+}  // namespace Domain.Game.Queries

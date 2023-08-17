@@ -11,7 +11,9 @@ public class CreateNewGameAdapter : App.Game.Ports.CreateNewGamePort {
     this.createNewGameCommand = createNewGameCommand;
   }
 
-  public void Handle(string gameHandle, int maxSeasons) {
+  void App.Game.Ports.CreateNewGamePort.Handle(
+      string gameHandle, int maxSeasons
+  ) {
     createNewGameCommand.Handle(gameHandle, maxSeasons);
   }
 }

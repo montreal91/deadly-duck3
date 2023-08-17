@@ -18,7 +18,7 @@ public class GameController : Protocol.GameServer {
     this.gameConverter = gameConverter;
   }
 
-  public IList<Protocol.GameListViewDto> GetGameListViews() {
+  IList<Protocol.GameListViewDto> Protocol.GameServer.GetGameListViews() {
     var games = new List<Protocol.GameListViewDto>();
 
     foreach(var game in getAllGamesQuery.Handle()) {
@@ -28,7 +28,7 @@ public class GameController : Protocol.GameServer {
     return games;
   }
 
-  public void CreateNewGame(Protocol.CreateNewGameDto game) {
+  void Protocol.GameServer.CreateNewGame(Protocol.CreateNewGameDto game) {
     createNewGamePort.Handle(game.gameTitle, game.maxSeasons);
   }
 }
