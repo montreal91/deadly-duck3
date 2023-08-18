@@ -35,8 +35,8 @@ public class LoadCanvasController : MonoBehaviour {
         Quaternion.identity
       );
       button.transform.SetParent(content, false);
-      button.GetComponentInChildren<TMP_Text>().text = games[i].gameTitle;
-      button.GetComponent<HandleHolder>().SetHandle(games[i].gameTitle);
+      button.GetComponentInChildren<TMP_Text>().text = games[i].title;
+      button.GetComponent<HandleHolder>().SetHandle(games[i].title);
       button.onClick.AddListener(delegate {
         state.currentGameTitle = button.GetComponent<HandleHolder>().Handle;
       });

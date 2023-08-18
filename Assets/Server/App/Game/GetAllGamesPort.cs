@@ -5,17 +5,15 @@ using System.Collections.Generic;
 namespace App.Game.Ports {
 
 
-// public record Person(string FirstName, string LastName);
-
 public class GetAllGamesDto {
-  public readonly string gameHandle;
+  public readonly string handle;
 
-  public GetAllGamesDto(string gameHandle) {
-    this.gameHandle = gameHandle;
+  public GetAllGamesDto(string handle) {
+    this.handle = handle;
   }
 }
 
-public interface CreateNewGamePort {
+public interface GetAllGamesPort {
   public IList<GetAllGamesDto> Handle();
 }
 

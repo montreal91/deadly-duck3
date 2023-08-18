@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace App.Game.Handlers {
 
-public class GetAllGamesQueryImpl : Domain.Game.Queries.GetAllGamesQuery {
-  private readonly GameRepository gameRepository;
+public class GetAllGamesQueryHandler : Domain.Game.Queries.GetAllGamesQuery {
+  private readonly Domain.Game.GameRepository gameRepository;
 
-  public GetAllGamesQueryImpl(GameRepository gameRepository) {
+  public GetAllGamesQueryHandler(Domain.Game.GameRepository gameRepository) {
     this.gameRepository = gameRepository;
   }
 
-  IList<Game> Domain.Game.Queries.GetAllGamesQuery.Handle() {
+  IList<Domain.Game.Game> Domain.Game.Queries.GetAllGamesQuery.Handle() {
     return gameRepository.GetGames();
   }
 }

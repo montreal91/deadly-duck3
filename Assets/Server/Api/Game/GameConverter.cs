@@ -2,8 +2,8 @@
 namespace Api.Game {
 
 public class GameConverter {
-  public Protocol.GameListViewDto ToViewDto(Domain.Game.Game game) {
-    return new Protocol.GameListViewDto(game.Handle);
+  public Protocol.GameListViewDto ToViewDto(App.Game.Ports.GetAllGamesDto game) {
+    return new Protocol.GameListViewDto(game.handle);
   }
 }
 

@@ -2,10 +2,10 @@
 namespace Protocol {
 
 public class GameListViewDto {
-  public readonly string gameTitle;
+  public readonly string title;
 
-  public GameListViewDto(string gameTitle) {
-    this.gameTitle = gameTitle;
+  public GameListViewDto(string title) {
+    this.title = title;
   }
 }
 

@@ -2,16 +2,18 @@
 // Hand-crafted hard-coded ApplicationContext
 public class ServerBuilder {
   private readonly Domain.Game.GameRepository gameRepository;
-  private readonly Domain.Game.Port.GetAllGamesQuery getAllGamesQuery;
+  private readonly Domain.Game.Queries.GetAllGamesQuery getAllGamesQuery;
   private readonly Domain.Game.Commands.CreateNewGame createNewGameCommand;
   private readonly Api.Game.Adapters.CreateNewGameAdapter createNewGameAdapter;
+  private readonly Api.Game.Adapters.GetAllGamesAdapter getAllGamesAdapter;
+  private readonly Api.Game.Adapters.GameToDtoConverter gameToDtoConverter;
   private readonly Api.Game.GameConverter gameConverter;
   private readonly Protocol.GameServer gameController;
 
 
   public ServerBuilder() {
     gameRepository = new Spi.Game.InMemoryGameRepository();
-    getAllGamesQuery = new Domain.Game.Port.GetAllGamesQueryImpl(
+    getAllGamesQuery = new App.Game.Handlers.GetAllGamesQueryHandler(
         gameRepository
     );
 
@@ -23,9 +25,15 @@ public class ServerBuilder {
         createNewGameCommand
     );
 
+    gameToDtoConverter = new Api.Game.Adapters.GameToDtoConverter();
+
+    getAllGamesAdapter = new Api.Game.Adapters.GetAllGamesAdapter(
+        getAllGamesQuery, gameToDtoConverter
+    );
+
     gameConverter = new Api.Game.GameConverter();
     gameController = new Api.Game.GameController(
-      getAllGamesQuery, createNewGameAdapter, gameConverter
+      getAllGamesAdapter, createNewGameAdapter, gameConverter
     );
   }
 
