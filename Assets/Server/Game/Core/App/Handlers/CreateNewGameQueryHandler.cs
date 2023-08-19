@@ -1,18 +1,18 @@
 
 using System.Collections.Generic;
 
-namespace App.Game.Handlers {
+namespace Game.App.Handlers {
 
-public class GetAllGamesQueryHandler : Domain.Game.Queries.GetAllGamesQuery {
-  private readonly Domain.Game.GameRepository gameRepository;
+public class GetAllGamesQueryHandler : Game.Domain.Queries.GetAllGamesQuery {
+  private readonly Game.App.Ports.GameRepository gameRepository;
 
-  public GetAllGamesQueryHandler(Domain.Game.GameRepository gameRepository) {
+  public GetAllGamesQueryHandler(Game.App.Ports.GameRepository gameRepository) {
     this.gameRepository = gameRepository;
   }
 
-  IList<Domain.Game.Game> Domain.Game.Queries.GetAllGamesQuery.Handle() {
+  IList<Game.Domain.Model.Game> Game.Domain.Queries.GetAllGamesQuery.Handle() {
     return gameRepository.GetGames();
   }
 }
 
-}  // namespace App.Game.Handlers
+}  // namespace Game.App.Handlers

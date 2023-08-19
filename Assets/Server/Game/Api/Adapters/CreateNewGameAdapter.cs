@@ -1,21 +1,21 @@
 
-namespace Api.Game.Adapters {
+namespace Game.Api.Adapters {
 
 
-public class CreateNewGameAdapter : App.Game.Ports.CreateNewGamePort {
-  private Domain.Game.Commands.CreateNewGame createNewGameCommand;
+public class CreateNewGameAdapter : Game.App.Ports.CreateNewGamePort {
+  private Game.Domain.Commands.CreateNewGame createNewGameCommand;
 
   public CreateNewGameAdapter(
-      Domain.Game.Commands.CreateNewGame createNewGameCommand
+      Game.Domain.Commands.CreateNewGame createNewGameCommand
   ) {
     this.createNewGameCommand = createNewGameCommand;
   }
 
-  void App.Game.Ports.CreateNewGamePort.Handle(
+  void Game.App.Ports.CreateNewGamePort.Handle(
       string gameHandle, int maxSeasons
   ) {
     createNewGameCommand.Handle(gameHandle, maxSeasons);
   }
 }
 
-}  // namespace Api.Game.Adapters
+}  // namespace Game.Api.Adapters

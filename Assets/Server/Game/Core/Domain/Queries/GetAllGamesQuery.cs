@@ -1,10 +1,10 @@
 
 using System.Collections.Generic;
 
-namespace Domain.Game.Queries {
+namespace Game.Domain.Queries {
 
 public interface GetAllGamesQuery {
-  IList<Game> Handle();
+  IList<Game.Domain.Model.Game> Handle();
 }
 
-}  // namespace Domain.Game.Queries
+}  // namespace Game.Domain.Queries

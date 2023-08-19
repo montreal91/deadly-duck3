@@ -1,34 +1,37 @@
 using System.Collections.Generic;
 
-namespace App.Game.Handlers {
+
+namespace Game.App.Handlers {
 
 
-public class CreateNewGameCommand : Domain.Game.Commands.CreateNewGame {
-  private readonly Domain.Game.GameRepository gameRepository;
+public class CreateNewGameCommand : Game.Domain.Commands.CreateNewGame {
+  private readonly Game.App.Ports.GameRepository gameRepository;
   private readonly HashSet<int> GAME_LENGTHS = new HashSet<int>(
     new int[] {5, 10, 25, 50}
   );
 
-  public CreateNewGameCommand(Domain.Game.GameRepository gameRepository) {
+  public CreateNewGameCommand(Game.App.Ports.GameRepository gameRepository) {
     this.gameRepository = gameRepository;
   }
 
-  public void Handle(string gameHandle, int maxSeasons) {
+  void Game.Domain.Commands.CreateNewGame.Handle(
+      string gameHandle, int maxSeasons
+  ) {
     if (gameRepository.DoesGameExist(gameHandle)) {
-      throw new Domain.Exceptions.GameCreationException(
+      throw new Game.Core.Exceptions.GameCreationException(
         $"[{gameHandle}] game already exists."
       );
     }
 
     if (!GAME_LENGTHS.Contains(maxSeasons)) {
-      throw new Domain.Exceptions.GameCreationException(
+      throw new Game.Core.Exceptions.GameCreationException(
         $"Invalid number of seasons. ({maxSeasons}, should be 5, 10, 25, 50)"
       );
     }
 
-    Domain.Game.Game game = new Domain.Game.Game(gameHandle, maxSeasons);
+    var game = new Game.Domain.Model.Game(gameHandle, maxSeasons);
     gameRepository.Save(game);
   }
 }
 
-}  // App.Game.Handlers
+}  // Game.App.Handlers

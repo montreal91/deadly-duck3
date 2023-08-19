@@ -1,7 +1,7 @@
 
 using System;
 
-namespace Domain.Game {
+namespace Game.Domain.Model {
 
 public class Game {
   private readonly string handle;
@@ -25,4 +25,4 @@ public class Game {
   }
 }
 
-}  // namespace Domain.Game
+}  // namespace Game.Domain.Model

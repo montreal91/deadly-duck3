@@ -1,38 +1,38 @@
 
 // Hand-crafted hard-coded ApplicationContext
 public class ServerBuilder {
-  private readonly Domain.Game.GameRepository gameRepository;
-  private readonly Domain.Game.Queries.GetAllGamesQuery getAllGamesQuery;
-  private readonly Domain.Game.Commands.CreateNewGame createNewGameCommand;
-  private readonly Api.Game.Adapters.CreateNewGameAdapter createNewGameAdapter;
-  private readonly Api.Game.Adapters.GetAllGamesAdapter getAllGamesAdapter;
-  private readonly Api.Game.Adapters.GameToDtoConverter gameToDtoConverter;
-  private readonly Api.Game.GameConverter gameConverter;
+  private readonly Game.Domain.Queries.GetAllGamesQuery getAllGamesQuery;
+  private readonly Game.Domain.Commands.CreateNewGame createNewGameCommand;
+  private readonly Game.App.Ports.GameRepository gameRepository;
+  private readonly Game.Api.Adapters.CreateNewGameAdapter createNewGameAdapter;
+  private readonly Game.Api.Adapters.GetAllGamesAdapter getAllGamesAdapter;
+  private readonly Game.Api.Adapters.GameToDtoConverter gameToDtoConverter;
+  private readonly Game.Api.GameConverter gameConverter;
   private readonly Protocol.GameServer gameController;
 
 
   public ServerBuilder() {
-    gameRepository = new Spi.Game.InMemoryGameRepository();
-    getAllGamesQuery = new App.Game.Handlers.GetAllGamesQueryHandler(
+    gameRepository = new Game.Spi.InMemoryGameRepository();
+    getAllGamesQuery = new Game.App.Handlers.GetAllGamesQueryHandler(
         gameRepository
     );
 
-    createNewGameCommand = new App.Game.Handlers.CreateNewGameCommand(
+    createNewGameCommand = new Game.App.Handlers.CreateNewGameCommand(
         gameRepository
     );
 
-    createNewGameAdapter = new  Api.Game.Adapters.CreateNewGameAdapter(
+    createNewGameAdapter = new Game.Api.Adapters.CreateNewGameAdapter(
         createNewGameCommand
     );
 
-    gameToDtoConverter = new Api.Game.Adapters.GameToDtoConverter();
+    gameToDtoConverter = new Game.Api.Adapters.GameToDtoConverter();
 
-    getAllGamesAdapter = new Api.Game.Adapters.GetAllGamesAdapter(
+    getAllGamesAdapter = new Game.Api.Adapters.GetAllGamesAdapter(
         getAllGamesQuery, gameToDtoConverter
     );
 
-    gameConverter = new Api.Game.GameConverter();
-    gameController = new Api.Game.GameController(
+    gameConverter = new Game.Api.GameConverter();
+    gameController = new Game.Api.GameController(
       getAllGamesAdapter, createNewGameAdapter, gameConverter
     );
   }

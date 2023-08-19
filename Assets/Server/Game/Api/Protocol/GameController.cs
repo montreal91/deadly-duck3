@@ -1,17 +1,17 @@
 
 using System.Collections.Generic;
 
-namespace Api.Game {
+namespace Game.Api {
 
 
 public class GameController : Protocol.GameServer {
-  private readonly App.Game.Ports.GetAllGamesPort getAllGamesPort;
-  private readonly App.Game.Ports.CreateNewGamePort createNewGamePort;
+  private readonly Game.App.Ports.GetAllGamesPort getAllGamesPort;
+  private readonly Game.App.Ports.CreateNewGamePort createNewGamePort;
   private readonly GameConverter gameConverter;
 
   public GameController(
-      App.Game.Ports.GetAllGamesPort getAllGamesPort,
-      App.Game.Ports.CreateNewGamePort createNewGamePort,
+      Game.App.Ports.GetAllGamesPort getAllGamesPort,
+      Game.App.Ports.CreateNewGamePort createNewGamePort,
       GameConverter gameConverter
   ) {
     this.getAllGamesPort = getAllGamesPort;
@@ -34,4 +34,4 @@ public class GameController : Protocol.GameServer {
   }
 }
 
-}  // namespace Api.Game
+}  // namespace Game.Api

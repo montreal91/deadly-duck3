@@ -1,17 +1,20 @@
 using System.Collections.Generic;
 
-public class MockGameRepository : Domain.Game.GameRepository {
-  private readonly Dictionary<string, Domain.Game.Game> repository;
+using GameModel = Game.Domain.Model.Game;
+using GameRepository = Game.App.Ports.GameRepository;
+
+public class MockGameRepository : GameRepository {
+  private readonly Dictionary<string, GameModel> repository;
 
   public MockGameRepository() {
-    this.repository = new Dictionary<string, Domain.Game.Game>();
+    this.repository = new Dictionary<string, GameModel>();
   }
 
-  public void Save(Domain.Game.Game game) {
+  void GameRepository.Save(GameModel game) {
     repository[game.Handle] = game;
   }
 
-  public Domain.Game.Game? GetGameByHandle(string handle) {
+  GameModel? GameRepository.GetGameByHandle(string handle) {
     if (repository.ContainsKey(handle)) {
       return repository[handle];
     }
@@ -19,12 +22,12 @@ public class MockGameRepository : Domain.Game.GameRepository {
     return null;
   }
 
-  public bool DoesGameExist(string handle) {
+  bool GameRepository.DoesGameExist(string handle) {
     return repository.ContainsKey(handle);
   }
 
-  public IList<Domain.Game.Game> GetGames() {
-    var res = new List<Domain.Game.Game>();
-    return new List<Domain.Game.Game>(repository.Values);
+  IList<GameModel> GameRepository.GetGames() {
+    var res = new List<GameModel>();
+    return new List<GameModel>(repository.Values);
   }
 }

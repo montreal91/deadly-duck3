@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-namespace App.Game.Ports {
+namespace Game.App.Ports {
 
 
 public class GetAllGamesDto {
@@ -17,4 +17,4 @@ public interface GetAllGamesPort {
   public IList<GetAllGamesDto> Handle();
 }
 
-}  // namespace App.Game.Ports
+}  // namespace Game.App.Ports

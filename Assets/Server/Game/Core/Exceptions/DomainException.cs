@@ -1,6 +1,6 @@
 using System;
 
-namespace Domain.Exceptions {
+namespace Game.Core.Exceptions {
 
 public class DomainException : Exception {
   public DomainException() {}
@@ -11,4 +11,4 @@ public class DomainException : Exception {
       : base(message, cause) {}
 }
 
-}  // namespace Domain.Exceptions
+}  // namespace Game.Core.Exceptions

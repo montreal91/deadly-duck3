@@ -3,17 +3,17 @@ using NUnit.Framework;
 
 
 public class CreateNewGameCommandTest {
-  private Domain.Game.GameRepository gameRepository;
-  private App.Game.Handlers.CreateNewGameCommand commandHandler;
+  private Game.App.Ports.GameRepository gameRepository;
+  private Game.Domain.Commands.CreateNewGame commandHandler;
 
   [OneTimeSetUp]
   public void SetUp() {
     gameRepository = new MockGameRepository();
-    commandHandler = new App.Game.Handlers.CreateNewGameCommand(
+    commandHandler = new Game.App.Handlers.CreateNewGameCommand(
       gameRepository
     );
     gameRepository.Save(
-      new Domain.Game.Game("ExistingName", 5)
+      new Game.Domain.Model.Game("ExistingName", 5)
     );
   }
 
@@ -31,14 +31,14 @@ public class CreateNewGameCommandTest {
   public void SameGameNameError() {
     Assert.True(gameRepository.DoesGameExist("ExistingName"));
 
-    Assert.Throws<Domain.Exceptions.GameCreationException>(
+    Assert.Throws<Game.Core.Exceptions.GameCreationException>(
       () => commandHandler.Handle("ExistingName", 5)
     );
   }
 
   [Test]
   public void InvalidSeasonNumber() {
-    Assert.Throws<Domain.Exceptions.GameCreationException>(
+    Assert.Throws<Game.Core.Exceptions.GameCreationException>(
       () => commandHandler.Handle("TestGame", 6)
     );
   }

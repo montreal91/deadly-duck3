@@ -1,8 +1,8 @@
 
-namespace Domain.Game.Commands {
+namespace Game.Domain.Commands {
 
 public interface CreateNewGame {
   public void Handle(string gameHandle, int maxSeasons);
 }
 
-}  // namespace Domain.Game.Commands
+}  // namespace Game.Domain.Commands

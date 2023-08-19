@@ -1,12 +1,14 @@
 using System.Collections.Generic;
 
-namespace Domain.Game {
+namespace Game.App.Ports {
+
+using GameModel = Game.Domain.Model.Game;
 
 public interface GameRepository {
-  void Save(Game game);
-  Game? GetGameByHandle(string handle);
+  void Save(GameModel game);
+  GameModel? GetGameByHandle(string handle);
   bool DoesGameExist(string handle);
-  IList<Game> GetGames();
+  IList<GameModel> GetGames();
 }
 
-}  // namespace Domain.Game
+}  // namespace Game.App.Ports
