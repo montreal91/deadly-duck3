@@ -8,9 +8,11 @@ public class CanvasManager : MonoBehaviour {
   public string canvasTag;
   public string initialCanvas;
 
-  private Dictionary<string, Canvas> canvasHolder = new Dictionary<string, Canvas>();
+  private Dictionary<string, Canvas> canvasHolder =
+      new Dictionary<string, Canvas>();
+
   void Start(){
-    foreach (GameObject canvas in GameObject.FindGameObjectsWithTag(canvasTag)) {
+    foreach (var canvas in GameObject.FindGameObjectsWithTag(canvasTag)) {
       Debug.Log(canvas.name);
       canvasHolder.Add(canvas.name, canvas.GetComponent<Canvas>());
     }
