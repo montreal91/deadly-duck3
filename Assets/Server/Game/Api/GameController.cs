@@ -30,7 +30,9 @@ public class GameController : Protocol.GameServer {
   }
 
   void Protocol.GameServer.CreateNewGame(Protocol.CreateNewGameDto game) {
-    createNewGamePort.Handle(game.gameTitle, game.maxSeasons);
+    createNewGamePort.Handle(
+        new Game.App.Ports.CreateNewGameDto(game.gameTitle, game.maxSeasons)
+    );
   }
 }
 

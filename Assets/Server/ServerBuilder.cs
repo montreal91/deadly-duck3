@@ -1,12 +1,11 @@
 
 // Hand-crafted hard-coded ApplicationContext
 public class ServerBuilder {
-  private readonly Game.Domain.Queries.GetAllGamesQuery getAllGamesQuery;
-  private readonly Game.Domain.Commands.CreateNewGame createNewGameCommand;
+  private readonly Game.App.Handlers.GetAllGamesQueryHandler getAllGamesQuery;
+  private readonly Game.App.Handlers.CreateNewGameCommand createNewGameCommand;
   private readonly Game.App.Ports.GameRepository gameRepository;
   private readonly Game.Adapters.CreateNewGameAdapter createNewGameAdapter;
   private readonly Game.Adapters.GetAllGamesAdapter getAllGamesAdapter;
-  private readonly Game.Adapters.GameToDtoConverter gameToDtoConverter;
   private readonly Game.Api.GameConverter gameConverter;
   private readonly Protocol.GameServer gameController;
 
@@ -25,11 +24,7 @@ public class ServerBuilder {
         createNewGameCommand
     );
 
-    gameToDtoConverter = new Game.Adapters.GameToDtoConverter();
-
-    getAllGamesAdapter = new Game.Adapters.GetAllGamesAdapter(
-        getAllGamesQuery, gameToDtoConverter
-    );
+    getAllGamesAdapter = new Game.Adapters.GetAllGamesAdapter(getAllGamesQuery);
 
     gameConverter = new Game.Api.GameConverter();
     gameController = new Game.Api.GameController(

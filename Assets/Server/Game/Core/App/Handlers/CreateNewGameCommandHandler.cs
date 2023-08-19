@@ -1,36 +1,32 @@
 using System.Collections.Generic;
 
+using Lib;
+
 
 namespace Game.App.Handlers {
 
+using GameModel = Game.Domain.Model.Game;
+using CreateNewGame = Game.Domain.Commands.CreateNewGame;
 
-public class CreateNewGameCommand : Game.Domain.Commands.CreateNewGame {
+public class CreateNewGameCommand : CommandHandler<CreateNewGame, int> {
   private readonly Game.App.Ports.GameRepository gameRepository;
-  private readonly HashSet<int> GAME_LENGTHS = new HashSet<int>(
-    new int[] {5, 10, 25, 50}
-  );
 
   public CreateNewGameCommand(Game.App.Ports.GameRepository gameRepository) {
     this.gameRepository = gameRepository;
   }
 
-  void Game.Domain.Commands.CreateNewGame.Handle(
-      string gameHandle, int maxSeasons
-  ) {
-    if (gameRepository.DoesGameExist(gameHandle)) {
-      throw new Game.Core.Exceptions.GameCreationException(
-        $"[{gameHandle}] game already exists."
-      );
+  public int Handle(Game.Domain.Commands.CreateNewGame command) {
+    if (gameRepository.DoesGameExist(command.gameHandle)) {
+      return 1;
     }
 
-    if (!GAME_LENGTHS.Contains(maxSeasons)) {
-      throw new Game.Core.Exceptions.GameCreationException(
-        $"Invalid number of seasons. ({maxSeasons}, should be 5, 10, 25, 50)"
-      );
+    if (!GameModel.GAME_LENGTHS.Contains(command.maxSeasons)) {
+      return 1;
     }
 
-    var game = new Game.Domain.Model.Game(gameHandle, maxSeasons);
+    var game = new GameModel(command.gameHandle, command.maxSeasons);
     gameRepository.Save(game);
+    return 0;
   }
 }
 

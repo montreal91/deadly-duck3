@@ -6,29 +6,21 @@ namespace Game.Adapters {
 
 using GameDto = Game.App.Ports.GetAllGamesDto;
 
-public class GameToDtoConverter {
-  public GameDto Convert(Game.Domain.Model.Game game) {
-    return new GameDto(game.Handle);
-  }
-}
 
 public class GetAllGamesAdapter : Game.App.Ports.GetAllGamesPort {
-  private Game.Domain.Queries.GetAllGamesQuery getAllGamesQuery;
-  private GameToDtoConverter converter;
+  private readonly Game.App.Handlers.GetAllGamesQueryHandler getAllGamesQuery;
 
   public GetAllGamesAdapter(
-      Game.Domain.Queries.GetAllGamesQuery getAllGamesQuery,
-      GameToDtoConverter converter
+      Game.App.Handlers.GetAllGamesQueryHandler getAllGamesQuery
   ) {
     this.getAllGamesQuery = getAllGamesQuery;
-    this.converter = converter;
   }
 
   IList<GameDto> Game.App.Ports.GetAllGamesPort.Handle() {
     var res = new List<GameDto>();
 
-    foreach (var game in getAllGamesQuery.Handle()) {
-      res.Add(converter.Convert(game));
+    foreach (var game in getAllGamesQuery.Handle(null).games) {
+      res.Add(new GameDto(game.handle));
     }
 
     return res;

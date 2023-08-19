@@ -1,19 +1,22 @@
 
 using NUnit.Framework;
 
+using CreateNewGameCommand = Game.Domain.Commands.CreateNewGame;
 
 public class CreateNewGameCommandTest {
   private Game.App.Ports.GameRepository gameRepository;
-  private Game.Domain.Commands.CreateNewGame commandHandler;
+  private Game.App.Handlers.CreateNewGameCommand commandHandler;
 
-  [OneTimeSetUp]
-  public void SetUp() {
+  private readonly int EXISTING_SEASONS = 10;
+
+  [SetUp]
+  public void Init() {
     gameRepository = new MockGameRepository();
     commandHandler = new Game.App.Handlers.CreateNewGameCommand(
       gameRepository
     );
     gameRepository.Save(
-      new Game.Domain.Model.Game("ExistingName", 5)
+      new Game.Domain.Model.Game("ExistingName", EXISTING_SEASONS)
     );
   }
 
@@ -21,7 +24,7 @@ public class CreateNewGameCommandTest {
   public void CreateNewGameBaseCase() {
     Assert.False(gameRepository.DoesGameExist("TestGame"));
 
-    commandHandler.Handle("TestGame", 5);
+    commandHandler.Handle(new CreateNewGameCommand("TestGame", 5));
     var game = gameRepository.GetGameByHandle("TestGame");
 
     Assert.True(gameRepository.DoesGameExist("TestGame"));
@@ -31,15 +34,20 @@ public class CreateNewGameCommandTest {
   public void SameGameNameError() {
     Assert.True(gameRepository.DoesGameExist("ExistingName"));
 
-    Assert.Throws<Game.Core.Exceptions.GameCreationException>(
-      () => commandHandler.Handle("ExistingName", 5)
+
+    int res = commandHandler.Handle(
+        new CreateNewGameCommand("ExistingName", 5)
     );
+    var game = gameRepository.GetGameByHandle("ExistingName");
+
+    Assert.AreEqual(1, res);
+    Assert.AreEqual(EXISTING_SEASONS, game.MaxSeasons);
   }
 
   [Test]
   public void InvalidSeasonNumber() {
-    Assert.Throws<Game.Core.Exceptions.GameCreationException>(
-      () => commandHandler.Handle("TestGame", 6)
-    );
+    int res = commandHandler.Handle(new CreateNewGameCommand("TestGame", 6));
+    Assert.AreEqual(1, res);
+    Assert.False(gameRepository.DoesGameExist("TestGame"));
   }
 }
