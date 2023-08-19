@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-namespace Game.Api.Adapters {
+namespace Game.Adapters {
 
 using GameDto = Game.App.Ports.GetAllGamesDto;
 
@@ -35,4 +35,4 @@ public class GetAllGamesAdapter : Game.App.Ports.GetAllGamesPort {
   }
 }
 
-}  // namespace Game.Api.Adapters
+}  // namespace Game.Adapters

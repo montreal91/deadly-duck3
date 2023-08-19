@@ -1,5 +1,5 @@
 
-namespace Game.Api.Adapters {
+namespace Game.Adapters {
 
 
 public class CreateNewGameAdapter : Game.App.Ports.CreateNewGamePort {
@@ -18,4 +18,4 @@ public class CreateNewGameAdapter : Game.App.Ports.CreateNewGamePort {
   }
 }
 
-}  // namespace Game.Api.Adapters
+}  // namespace Game.Adapters
